@@ -1,30 +1,11 @@
 ﻿namespace HotelListing_API.Data;
 
-
-//This is a Data Model class that represents a Hotel entity.
-//It has properties for Id, Name, Address, and Rating.
-
-//What is a Data model class?
-//A Data model class is a class that represents the structure of data in an application.
-//It defines the properties and relationships of the data entities that are used in the
-//application. In the context of an API, a Data model class is often used to represent
-//the data that is sent and received through the API endpoints.
-//It serves as a blueprint for how the data should be structured and can be used for
-//validation, serialization, and deserialization of data when communicating with clients.
-public class Hotel
+public class Country
 {
-    public int Id { get; set; }
-
-    public string Name { get; set; }
-
-    public string Address { get; set; } = string.Empty;
-
-    public double Rating { get; set; }
-
     public int CountryId { get; set; }
-
-    public Country? Country { get; set; }
-
+    public string Name { get; set; }
+    public string ShortName { get; set; }
+    public IList<Hotel> Hotels { get; set; } = new List<Hotel>();
 }
 
 //An auto-implemented property is a shorthand syntax for defining a property in C#.
