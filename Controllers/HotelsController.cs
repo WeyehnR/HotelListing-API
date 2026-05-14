@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelListing_API.Controllers;
 
+//This route will be used to access the controller's actions.
+//The [controller] token will be replaced with the name of the controller,
+//which is "Hotels" in this case. So, the base route for this controller will
+//be "api/hotels".
 [Route("api/[controller]")]
 [ApiController]
 public class HotelsController : ControllerBase
