@@ -12,6 +12,5 @@ public class Hotel
 
     public int CountryId { get; set; }
 
-    public Country? Country { get; set; }
-
+    public Country? Country { get; set; } //this is a navigation property that allows you to access the associated Country entity for a specific hotel. It represents the relationship between the Hotel and Country entities, where each hotel is associated with one country. By including this navigation property
 }
