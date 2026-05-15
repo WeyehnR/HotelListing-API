@@ -1,4 +1,4 @@
-﻿namespace HotelListing_API.Data;
+﻿namespace HotelListing_API.Models;
 
 public class Hotel
 {
