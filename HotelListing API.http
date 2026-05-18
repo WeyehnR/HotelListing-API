@@ -1,3 +1,4 @@
+@HotelListing API_HostAddress = https://localhost:7245
 @HotelListing.API_HostAddress = https://localhost:7245
 
 
@@ -27,6 +28,36 @@ Content-Type: application/json
 
 {
   //Hotel
+}
+
+###
+
+GET {{HotelListing API_HostAddress}}/api/countries
+
+###
+
+POST {{HotelListing API_HostAddress}}/api/countries
+Content-Type: application/json
+
+{
+  //Country
+}
+
+###
+
+DELETE {{HotelListing API_HostAddress}}/api/countries/{{id}}
+
+###
+
+GET {{HotelListing API_HostAddress}}/api/countries/{{id}}
+
+###
+
+PUT {{HotelListing API_HostAddress}}/api/countries/{{id}}
+Content-Type: application/json
+
+{
+  //Country
 }
 
 ###
