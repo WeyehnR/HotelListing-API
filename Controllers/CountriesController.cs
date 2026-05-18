@@ -7,20 +7,19 @@ using HotelListing_API.Data;
 [ApiController]
 public class CountriesController(HotelListingDbContext context) : ControllerBase
 {
-    private readonly HotelListingDbContext _context = context;
 
     // GET: api/Country
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Country>>> GetCountry()
     {
-        return await _context.Countries.ToListAsync();
+        return await context.Countries.ToListAsync();
     }
 
     // GET: api/Country/5
     [HttpGet("{countryid}")]
     public async Task<ActionResult<Country>> GetCountry(int countryid)
     {
-        var country = await _context.Countries.FindAsync(countryid);
+        var country = await context.Countries.FindAsync(countryid);
 
         if (country == null)
         {
@@ -40,11 +39,11 @@ public class CountriesController(HotelListingDbContext context) : ControllerBase
             return BadRequest();
         }
 
-        _context.Entry(country).State = EntityState.Modified;
+        context.Entry(country).State = EntityState.Modified;
 
         try
         {
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)
         {
@@ -66,8 +65,8 @@ public class CountriesController(HotelListingDbContext context) : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Country>> PostCountry(Country country)
     {
-        _context.Countries.Add(country);
-        await _context.SaveChangesAsync();
+        context.Countries.Add(country);
+        await context.SaveChangesAsync();
 
         return CreatedAtAction("GetCountry", new { countryid = country.CountryId }, country);
     }
@@ -76,14 +75,14 @@ public class CountriesController(HotelListingDbContext context) : ControllerBase
     [HttpDelete("{countryid}")]
     public async Task<IActionResult> DeleteCountry(int? countryid)
     {
-        var country = await _context.Countries.FindAsync(countryid);
+        var country = await context.Countries.FindAsync(countryid);
         if (country == null)
         {
             return NotFound("Country cannot be deleted because it was not found.");
         }
 
-        _context.Countries.Remove(country);
-        await _context.SaveChangesAsync();
+        context.Countries.Remove(country);
+        await context.SaveChangesAsync();
 
         return NoContent();
     }
@@ -91,6 +90,6 @@ public class CountriesController(HotelListingDbContext context) : ControllerBase
     //Make this CountryExist async to avoid blocking the thread while waiting for the database operation to complete. This is especially important in a web application where you want to keep the server responsive and able to handle multiple requests concurrently.
     private async Task<bool> CountryExists(int? countryid)
     {
-        return await _context.Countries.AnyAsync(e => e.CountryId == countryid);
+        return await context.Countries.AnyAsync(e => e.CountryId == countryid);
     }
 }
