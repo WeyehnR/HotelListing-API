@@ -61,3 +61,33 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{HotelListing API_HostAddress}}/api/hotels
+
+###
+
+POST {{HotelListing API_HostAddress}}/api/hotels
+Content-Type: application/json
+
+{
+  //Hotel
+}
+
+###
+
+DELETE {{HotelListing API_HostAddress}}/api/hotels/{id}
+
+###
+
+GET {{HotelListing API_HostAddress}}/api/hotels/{{id}}
+
+###
+
+PUT {{HotelListing API_HostAddress}}/api/hotels/{id}
+Content-Type: application/json
+
+{
+  //Nullable
+}
+
+###
